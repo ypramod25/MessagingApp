@@ -1,9 +1,10 @@
+import { StatusCodes } from "http-status-codes";
+
 import User from "../schema/user.js";
 import Workspace from "../schema/workspace.js";
 import ClientError from "../utils/errors/clientError.js";
 import channelRepository from "./channelRepository.js";
 import crudRepository from "./crudRepository.js";
-import { StatusCodes } from "http-status-codes";
 
 const workspaceRepository = {
     ...crudRepository(Workspace),
@@ -25,7 +26,7 @@ const workspaceRepository = {
         if(!workspace) {
             throw new ClientError({
                 explanation: "Invalid data send from client",
-                message: `Workspace with joinCode: ${joinCode} not found`,
+                message: `Workspace with joinCode not found`,
                 statusCode: StatusCodes.NOT_FOUND
             })
         }
@@ -37,7 +38,7 @@ const workspaceRepository = {
         if(!workspace) {
             throw new ClientError({
                 explanation: "Invalid data send from client",
-                message: `Workspace with joinCode: ${joinCode} not found`,
+                message: `Workspace with joinCode not found`,
                 statusCode: StatusCodes.NOT_FOUND
             })
         }
@@ -94,7 +95,7 @@ const workspaceRepository = {
         const workspaces = await Workspace.find({
             'members.memberId': memberId
         }).populate('members.memberId', 'username email avatar');
-        
+
         return workspaces;
     }
 
