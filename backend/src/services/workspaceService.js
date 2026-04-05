@@ -6,6 +6,14 @@ import workspaceRepository from "../repositories/workspaceRepository.js"
 import ClientError from '../utils/errors/clientError.js';
 import ValidationError from '../utils/errors/validationError.js';
 
+const isUserAdminOfWorkspace = (workspace, userId) => {
+    return workspace.members.some(member => member.memberId.toString() === userId && member.role === 'admin');
+}
+
+const isUserMemberOfWorkspace = (workspace, userId) => {
+    return workspace.members.some(member => member.memberId.toString() === userId);
+}
+
 export const createWorkspaceService = async (workspaceData) => {
     try {
         const joinCode = uuidv4().substring(0, 6).toUpperCase();
@@ -68,11 +76,11 @@ export const getWorkspaceByIdService = async (workspaceId, userId) => {
                 statusCode: StatusCodes.NOT_FOUND
             })
         }
-        const isMember = workspace.members.some(member => member.memberId.toString() === userId);
+        const isMember = isUserMemberOfWorkspace(workspace, userId);
         if(!isMember) {
             throw new ClientError({
-                explanation: 'User is not admin of the workspace or member of the workspace',
-                message: 'Only workspace admins can delete the workspace',
+                explanation: 'User is not member of the workspace',
+                message: 'User is not the member of the workspace',
                 statusCode: StatusCodes.UNAUTHORIZED
             })
         }
@@ -94,7 +102,7 @@ export const deleteWorkspaceService = async (workspaceId, userId) => {
                 statusCode: StatusCodes.NOT_FOUND
             })
         }
-        const isAdmin = workspace.members.some(member => member.memberId.toString() === userId && member.role === 'admin');
+        const isAdmin = isUserAdminOfWorkspace(workspace, userId);
         if(!isAdmin) {
             throw new ClientError({
                 explanation: 'User is not admin of the workspace or member of the workspace',
