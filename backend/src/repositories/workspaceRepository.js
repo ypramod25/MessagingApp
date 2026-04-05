@@ -21,6 +21,13 @@ const workspaceRepository = {
         return workspace;
     },
 
+    getWorkspaceDetailsById: async function(workspaceId) {
+        const workspace = await Workspace.findById(workspaceId)
+        .populate('members.memberId', 'username email avatar')
+        .populate('channels');
+        return workspace;
+    },
+
     getWorkspaceByJoinCode: async function (joinCode) {
         const workspace = await Workspace.findOne({joinCode});
         if(!workspace) {
