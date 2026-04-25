@@ -2,6 +2,7 @@ import { is } from "zod/v4/locales";
 import workspaceRepository from "../repositories/workspaceRepository.js";
 import { isUserMemberOfWorkspace } from "./workspaceService.js";
 import userRepository from "../repositories/userRepository.js";
+import { StatusCodes } from "http-status-codes";
 
 export const isMemberPartOfWorkspaceService = async (workspaceId, memberId) => {
     const workspace = await workspaceRepository.getById(workspaceId);

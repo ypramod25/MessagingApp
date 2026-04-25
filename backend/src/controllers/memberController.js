@@ -1,6 +1,7 @@
 import { success } from "zod";
 import { isMemberPartOfWorkspaceService } from "../services/memberService.js";
 import { successResponse } from "../utils/common/responseObjects.js";
+import { StatusCodes } from "http-status-codes";
 
 export const isMemberPartOfWorkspaceController = async (req, res) => {
     try {   
