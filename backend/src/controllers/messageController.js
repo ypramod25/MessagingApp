@@ -1,3 +1,8 @@
+import { StatusCodes } from "http-status-codes";
+
+import { getMessagesService } from "../services/messageService.js";
+import { customErrorResponse, internalErrorResponse, successResponse } from "../utils/common/responseObjects.js";
+
 export const getMessagesController = async (req, res) => {
     try {
         const message = await getMessagesService(
@@ -5,7 +10,8 @@ export const getMessagesController = async (req, res) => {
                 channelId: req.params.channelId,
             },
             req.query.page || 1,
-            req.query.limit || 20
+            req.query.limit || 20,
+            req.user
         );
         return res
         .status(StatusCodes.OK)

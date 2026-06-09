@@ -1,14 +1,27 @@
 import './processors/mailProcessor.js';
 
 import express from 'express';
+import {createServer} from 'http'
 import { StatusCodes } from 'http-status-codes';
+import {Server} from 'socket.io';
 
 import serverAdapter from './config/bullBoardConfig.js';
 import connectDB from './config/dbConfig.js';
 import { PORT } from './config/serverConfig.js';
+import messageHandler from './controllers/messageSocketController.js';
 import apiRouter from './routes/apiRouter.js';
 
+
 const app = express();
+const server = createServer(app); // common server where both express and socket.io will run
+const io = new Server(server); // Create a Socket.IO server instance
+
+// Socket.IO connection handler
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id);
+
+  messageHandler(io, socket);
+});
 
 app.use('/ui', serverAdapter .getRouter());
 
@@ -20,7 +33,7 @@ app.get('/ping', (req, res) => {
   return res.status(StatusCodes.OK).json({ message: 'pong' });
 });
 
-app.listen(PORT, async () => {
+server.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
 });
