@@ -1,13 +1,12 @@
 import { SignupCard } from "@/components/organisms/Auth/SignupCard";
 
-export const Auth = () => {
+export const Auth = ({children}) => {
     return (
         <div
             className="h-screen flex items-center justify-center bg-slack"        >
             <div className="md:h-auto md:w-105">
-                <SignupCard />
+                {children}
             </div>
-            
         </div>
     )
 }

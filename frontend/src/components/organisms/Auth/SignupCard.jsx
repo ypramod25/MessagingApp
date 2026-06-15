@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { useState } from "react"
+import {useNavigate} from 'react-router-dom'
 
 export const SignupCard = () => {
     const [signupForm, setsignupForm] = useState({
@@ -11,6 +12,7 @@ export const SignupCard = () => {
         confirmPassword:'',
         username:''
     })
+    const navigate = useNavigate();
     return (
         <Card className="w-full h-full">
             <CardHeader>
@@ -65,7 +67,10 @@ export const SignupCard = () => {
 
                 <p className="text-center text-sm text-muted-foreground">
                     Already have an account ? {' '}
-                    <span className="text-sky-600 hover:underline cursor-pointer">
+                    <span 
+                        className="text-sky-600 hover:underline cursor-pointer " 
+                        onClick={() => navigate('/auth/signin')}
+                    >
                         Sign In
                     </span>
                 </p>
