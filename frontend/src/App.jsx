@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";//@ is alias for src folder, so we can use it to import components from src/components/ui/button.jsx
+import { Routes, Route } from 'react-router-dom';
+import { Auth } from './pages/Auth/Auth';
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <Button className="cursor-pointer hover:bg-red-500">Shadcn Working 🚀</Button>
-    </div>
+    <Routes>
+      <Route path="/auth" element={<Auth />} />
+    </Routes>
   );
 }
 
