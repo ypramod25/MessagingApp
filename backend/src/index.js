@@ -1,5 +1,6 @@
 import './processors/mailProcessor.js';
 
+import cors from 'cors'
 import express from 'express';
 import {createServer} from 'http'
 import { StatusCodes } from 'http-status-codes';
@@ -25,6 +26,7 @@ io.on('connection', (socket) => {
   channelSocketHandler(io, socket);
 });
 
+app.use(cors()); // here we pass no origin in cors so it allows all origins
 app.use('/ui', serverAdapter .getRouter());
 
 app.use(express.json()); // To parse JSON request bodies

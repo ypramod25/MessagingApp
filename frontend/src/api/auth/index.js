@@ -1,4 +1,4 @@
-import axios from '@config/axiosConfig.js ';
+import axios from '@/config/axiosConfig.js';
 
 export const signUpRequest = async({email, password, username}) => {
     try {
@@ -10,7 +10,9 @@ export const signUpRequest = async({email, password, username}) => {
         return response.data;
     } catch(error) {
         console.log(error);
-        throw error.response.data;
+        throw error.response?.data || {
+            message:error.message
+        };
     }
 };
 
@@ -23,6 +25,8 @@ export const signInRequest = async({email, password}) => {
         return response.data;
     } catch(error) {
         console.log(error);
-        throw error.response.data;
+        throw error.response?.data || {
+            message:error.message
+        };
     }
 };

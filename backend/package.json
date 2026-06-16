@@ -17,6 +17,7 @@
     "@bull-board/express": "^7.0.0",
     "bcrypt": "^6.0.0",
     "bullmq": "^5.76.2",
+    "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "express": "^5.2.1",
