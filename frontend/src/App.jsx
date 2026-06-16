@@ -4,10 +4,11 @@ import { SigninCard } from '@/components/organisms/Auth/SigninCard';
 import { NotFound } from './pages/NotFound';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SignupContainer } from './components/organisms/Auth/SignupContainer';
+import { Toaster } from './components/ui/sonner';
+
+  const queryClient = new QueryClient(); 
 
 function App() {
-
-  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client = {queryClient}>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/auth/signin" element={<Auth><SigninCard /></Auth>} />
         <Route path="*" element={<NotFound />}/>
       </Routes>
+      <Toaster />
     </QueryClientProvider>
     
   );
