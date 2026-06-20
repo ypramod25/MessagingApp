@@ -1,4 +1,4 @@
- import { useSignup } from "@/hooks/apis/auth/useSignup";
+import { useSignup } from "@/hooks/apis/auth/useSignup";
 import { SignupCard } from "./SignupCard";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
