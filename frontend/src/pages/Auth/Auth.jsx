@@ -1,4 +1,3 @@
-import { SignupCard } from "@/components/organisms/Auth/SignupCard";
 
 export const Auth = ({children}) => {
     return (
