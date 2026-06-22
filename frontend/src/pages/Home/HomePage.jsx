@@ -1,3 +1,4 @@
+import { UserButton } from "@/components/atoms/UserButton/UserButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +25,8 @@ export const HomePage = () => {
                     >
                         Account
                     </Button>
+                    {<hr></hr>}
+                    <UserButton/>
                 </CardContent>
             </Card>
         </div>

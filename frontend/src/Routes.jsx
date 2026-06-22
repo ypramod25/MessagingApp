@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { Auth } from "./pages/Auth/Auth"
 import { SignupContainer } from "./components/organisms/Auth/SignupContainer"
 import { SigninContainer } from "./components/organisms/Auth/SigninContainer"
-import { HomePage } from "./pages/HomePage"
+import { HomePage } from "./pages/Home/HomePage"
 import { NotFound } from "./pages/NotFound"
 import { ProtectedRoute } from "./components/molecules/ProtectedRoute/ProtectedRoute"
 

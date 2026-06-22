@@ -10,8 +10,8 @@ export const useSignin = () => {
     const {isPending, isSuccess, error, mutateAsync:signinMutation} = useMutation({
         mutationFn: signInRequest,
         onSuccess: (response) => {
-            console.log("response.data =", response.data);
-            console.log("response.data.user =", response.data.user);
+            // console.log("response.data =", response.data);
+            // console.log("response.data.user =", response.data.user);
             console.log('Successfully signed in : ', response);
             const userObject = JSON.stringify(response.data);
             localStorage.setItem('user', userObject);
