@@ -6,12 +6,16 @@ import {
     MessageSquareIcon,
     MoreHorizontalIcon
 } from "lucide-react";
+import { WorkspaceSwitcher } from "./WorkspaceSwitcher";
 
 export const WorkspaceSideBar = () => {
     return (
         <aside
             className="w-19.5 h-full bg-dark flex flex-col gap-y-4 items-center pt-2.5 pb-2"
         >
+
+            <WorkspaceSwitcher/>
+
             <SidebarButton
                 Icon={HomeIcon}
                 label="home"
