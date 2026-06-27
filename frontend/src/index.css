@@ -23,6 +23,7 @@
     --color-chart-1: var(--chart-1);
     --color-slack: var(--slack);
     --color-dark:var(--dark);
+    --color-slack-medium:var(--slack-medium);
     --color-ring: var(--ring);
     --color-input: var(--input);
     --color-border: var(--border);
@@ -53,6 +54,7 @@
 :root {
     --slack: #5c3858;
     --dark:#481349;
+    --slack-medium:#5e2c5f;
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
